@@ -628,18 +628,16 @@ public class BLECentralPlugin extends CordovaPlugin implements BluetoothAdapter.
     /* @Override */
     public void onRequestPermissionResult(int requestCode, String[] permissions,
                                           int[] grantResults) /* throws JSONException */ {
-
         for(int result:grantResults) {
             if(result == PackageManager.PERMISSION_DENIED)
             {
                 LOG.d(TAG, "User *rejected* Coarse Location Access");
-                CallbackContext localPermissionCallback = this.permissionCallback
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(context, Manifest.permission.ACCESS_COARSE_LOCATION)) {
                     //Show permission explanation dialog...
-                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            localPermissionCallback.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, PERMISSION_DENIED_ERROR));
+                            this.permissionCallback.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, PERMISSION_DENIED_ERROR));
                         }
                     });
                     builder.setMessage("Fluss needs to access your location to enable bluetooth low energy scanning. This won't access your GPS device.")
