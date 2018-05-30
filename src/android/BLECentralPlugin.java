@@ -27,8 +27,10 @@ import android.content.pm.PackageManager;
 import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Build;
+import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.support.v4.app.ActivityCompat;
+import android.content.DialogInterface;
 
 import android.provider.Settings;
 import org.apache.cordova.CallbackContext;
