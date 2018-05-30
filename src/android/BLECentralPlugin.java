@@ -633,7 +633,7 @@ public class BLECentralPlugin extends CordovaPlugin implements BluetoothAdapter.
             if(result == PackageManager.PERMISSION_DENIED)
             {
                 LOG.d(TAG, "User *rejected* Coarse Location Access");
-                CallbackContext localPermissionCallback = this.permissionCallback
+                CallbackContext localPermissionCallback = this.permissionCallback;
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_COARSE_LOCATION)) {
                     //Show permission explanation dialog...
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
